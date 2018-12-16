@@ -4,12 +4,12 @@
 import dill as pickle
 import matplotlib.pyplot as plt
 
-X = dill.load(open("tmp", "rb"))
+X = pickle.load(open("tmp", "rb"))
 Xaxis = X["Xaxis"]
-Yaxis = Y["Yaxis"]
+Yaxis = X["Yaxis"]
 
 plt.plot(Xaxis, Yaxis, "b-")
 plt.xlabel("Number of games played for learning")
 plt.ylabel("Winning rate")
 plt.title("AI learnt with another AI, then played against random bot")
-plt.plot()
+plt.show()
