@@ -20,10 +20,11 @@ class Qlearning():
     def reset(self):
         self.current_state = self.init_state
         self.path = [self.init_state]
+        self.policy.reset()
 
     def move(self):
         self.move_one_step()
-        while ( self.current_state.reward == 0 ):
+        while ( not( self.policy.is_over() ) ):
             self.move_one_step()
     
     def move_one_step(self):
@@ -51,7 +52,7 @@ class Qlearning():
     
     def update_Qfunction(self):
         n = len( self.path )
-        if self.current_state.reward == -1: #on a perdu, donc on ne garde que la dernière action
+        if self.policy.hasFailed(): #on a perdu, donc on ne garde que la dernière action
             self.path = self.path[n-2:n]
             n = 2
         for i in range(n - 1, 0, -1):
