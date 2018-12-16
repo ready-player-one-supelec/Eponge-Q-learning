@@ -41,7 +41,7 @@ def main() :
     players = Players(player0, player1)
     configurePlayer1(players)
     nbGames = 10000
-    numberOfGamesTest = 1000000
+    numberOfGamesTest = 100000
     step = 100 # number of games between each test of our AI
     explorationRateTable = [explorationRate ** i for i in range(nbGames)]
 
