@@ -17,14 +17,12 @@ def gameMaster(game, players) :
         players[currentPlayer].addStateSequence(currentState, action, reward, game.currentNumberSticks)
         currentPlayer = 1 - currentPlayer
         players[currentPlayer].correctStateSequence(-reward, game.currentNumberSticks)
-    print("The Winner is {}".format(players[currentPlayer].name))
     players.qLearning()
     game.reset()
     return players
 
-def setOfGames(nbGames, game, players, learningRate, discountFactor, explorationRate) :
+def setOfGames(nbGames, game, players, learningRate, discountFactor, explorationRateTable) :
     for i in range(nbGames) :
-        print(i)
-        players.updateConstants(learningRate, discountFactor, explorationRate ** i)
+        players.updateConstants(learningRate, discountFactor, explorationRateTable[i])
         gameMaster(game, players)
     return players

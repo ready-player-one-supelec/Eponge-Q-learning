@@ -112,5 +112,5 @@ class Players :
         self.player2.qLearning()
 
     def displayStats(self) :
-        print("{} won {} times on {} games".format(self[0].name, self[0].gamesWon, self[0].gamesWon + self[0].gamesLost))
-        print("{} won {} times on {} games".format(self[1].name, self[1].gamesWon, self[1].gamesWon + self[1].gamesLost))
+        print("{} won {} times out of {} games".format(self[0].name, self[0].gamesWon, self[0].gamesWon + self[0].gamesLost))
+        print("{} won {} times out of {} games".format(self[1].name, self[1].gamesWon, self[1].gamesWon + self[1].gamesLost))
