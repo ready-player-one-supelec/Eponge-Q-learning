@@ -243,6 +243,7 @@ class Labyrinth():
                 dimensions[1]
             )
         ] = 1
+        self.init_reward = np.array(self.reward)
         
     def register_player(self, player):
         self.player = player
@@ -255,6 +256,7 @@ class Labyrinth():
         self.data[:,:] = 0
         self.data[(1,1)]=1
         self.player.reset()
+        self.reward = np.array(self.init_reward)
     
     def return_data(self):
         return self.data
@@ -285,6 +287,7 @@ class Labyrinth():
     
 
     def update_one_step(self, explore=False):
+        self.reward[self.player_position] = -1
         self.player_position = self.next_position(self.player_position, self.player.return_next_action(explore=explore))
         self.data[:,:] = 0
         self.data[self.player_position] = 1
@@ -297,7 +300,7 @@ class Labyrinth():
         return self.reward[self.player_position]==-1
     
     def return_reward(self, index):
-        return 10*(self.reward[self.player_position]) - 1
+        return (self.reward[self.player_position])
 
     def show(self):
         res = ''

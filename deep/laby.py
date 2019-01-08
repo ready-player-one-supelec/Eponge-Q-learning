@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 
-image_dimensions = (5, 6)
+image_dimensions = (7, 8)
 memory_len = 2
 mini_batch_size = 50
 
@@ -37,7 +37,7 @@ Dql = DeepQLearning(dimensions, [0,1,2,3], game_env.return_data(), game_env,memo
 
 
 game_env.register_player(Dql)
-
+game_env.show()
 x = range(iterations)
 y = [0 for _ in range(iterations)]
 for j in range(nb_tests):
@@ -55,6 +55,7 @@ for j in range(nb_tests):
         else:
             print(j, 'eme test',i, "eme itération : GAGNE !")
             y[i]+=1
+            Dql.epsilon = Dql.epsilon/2
         game_env.reset()
 
         #if i%(iterations//10) == 0:
